@@ -1,4 +1,4 @@
-# Ethanol
+# Ethanol neural networks
 
 Version 0.1: Released
 Stability : Testing
