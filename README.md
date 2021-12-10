@@ -1,4 +1,4 @@
-# Ethanol neural networks
+# Ethanol module
 
 Version 0.1: Released
 - Creates a neural network using input file and saves a neural network
