@@ -10,14 +10,14 @@
 Node::Node(unsigned int input_size) {
 	bias = 0.0;
 	output_signal = 0.0;
-	for(unsigned int i = 0; i < input_size; ++i) {
+	for (unsigned int i = 0; i < input_size; ++i) {
 		weight.push_back(0.0);
 		input_signal.push_back(0.0);
 	}
 }
 
-bool Node::set_weight(vector<double> &weight_val) {
-	if(weight_val.size() != weight.size())
+bool Node::set_weight(vector<double>& weight_val) {
+	if (weight_val.size() != weight.size())
 		return false;
 	weight.clear();
 	weight = weight_val;
@@ -45,14 +45,14 @@ double Node::get_output_signal() {
 	return output_signal;
 }
 
-bool Node::trigger(vector<double> &input_signal_val) {
-	if(input_signal_val.size() == input_signal.size()) {
+bool Node::trigger(vector<double>& input_signal_val) {
+	if (input_signal_val.size() == input_signal.size()) {
 		input_signal = input_signal_val;
 		output_signal = 0.0;
 		vector<double>::iterator input_pointer = input_signal.begin();
 		vector<double>::iterator weight_pointer = weight.begin();
 		// multiplying corresponding weights and signals and summing them
-		while(input_pointer != input_signal.end()) {
+		while (input_pointer != input_signal.end()) {
 			output_signal += (*input_pointer) * (*weight_pointer);
 			++input_pointer;
 			++weight_pointer;

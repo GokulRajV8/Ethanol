@@ -11,6 +11,7 @@
 #include <vector>
 #include <fstream>
 #include <math.h>
+#include <string>
 
 using namespace std;
 
@@ -34,7 +35,7 @@ public:
 	// Create a node with the given number of input connections
 	Node(unsigned int input_size);
 	// Get Set methods
-	bool set_weight(vector<double> &weight_val);
+	bool set_weight(vector<double>& weight_val);
 	bool set_bias(double bias_val);
 	vector<double> get_weight();
 	double get_bias();
@@ -43,7 +44,7 @@ public:
 
 	// Trigger the node for the excitation through input signals
 	// Returns true when successful
-	bool trigger(vector<double> &input_signal_val);
+	bool trigger(vector<double>& input_signal_val);
 };
 
 // Layer consists of various nodes accepting the same input and giving various outputs
@@ -60,7 +61,7 @@ public:
 	// Create a layer with the given number of input signals and number of nodes
 	Layer(unsigned int input_size, unsigned int nodes_count);
 	// Get Set methods
-	bool set_weight(vector<double> &weight_val, unsigned int node_id);
+	bool set_weight(vector<double>& weight_val, unsigned int node_id);
 	bool set_bias(double bias_val, unsigned int node_id);
 	vector<double> get_weight(unsigned int node_id);
 	double get_bias(unsigned int node_id);
@@ -69,7 +70,7 @@ public:
 
 	// Trigger the layer for the excitation of nodes through input signals and produce output signals
 	// Returns true when successful
-	bool trigger(vector<double> &input_signal);
+	bool trigger(vector<double>& input_signal);
 };
 
 // Neural network act like simulated brain using neuron-like nodes working together to predict the output for the given input.
@@ -78,16 +79,16 @@ private:
 	// Layers making the neural network
 	vector<Layer> layers;
 	// File stream for reporting the network activities
-	ofstream * report_stream;
+	ofstream* report_stream;
 
 	// Private method to verify the correctness of the input file used for neural network creation
-	bool validate_file(vector<string> &file_data);
+	bool validate_file(vector<string>& file_data);
 
 public:
 	// Create a neural network with the details given in the input file and also setup a file stream for reporting
-	Network(string file_name, ofstream &report_stream_val);
+	Network(string file_name, ofstream& report_stream_val);
 	// Get Set methods
-	bool set_weight(vector<double> &weight_val, unsigned int layer_id, unsigned int node_id);
+	bool set_weight(vector<double>& weight_val, unsigned int layer_id, unsigned int node_id);
 	bool set_bias(double bias_val, unsigned int layer_id, unsigned int node_id);
 	vector<double> get_weight(unsigned int layer_id, unsigned int node_id);
 	double get_bias(unsigned int layer_id, unsigned int node_id);
@@ -97,7 +98,7 @@ public:
 
 	// Trigger the neural network using input signals to get the output signals from the neural network
 	// Returns true when successful
-	bool trigger(vector<double> &input_signal);
+	bool trigger(vector<double>& input_signal);
 	// Save the network configuration as a file for archiving and future network creations
 	void save(string file_name);
 };
@@ -107,7 +108,7 @@ public:
 class Trainer {
 private:
 	// Network that has to be trained
-	Network * network;
+	Network* network;
 	// Set of inputs and corresponding outputs used for training
 	// Note : A row consists of input signals followed by the next row consisting of corresponding output signals
 	// and hence contains even number of rows in the vector
@@ -115,13 +116,13 @@ private:
 	// Learning rate used for the network training
 	double epsilon;
 	// File stream for reporting the trainer activities
-	ofstream * report_stream;
+	ofstream* report_stream;
 
-	bool validate_file(vector<string> &file_data);
+	bool validate_file(vector<string>& file_data);
 
 public:
 	// Create a trainer with a network to be trained and also setup a file stream for reporting
-	Trainer(Network &network_obj, ofstream &report_stream_val);
+	Trainer(Network& network_obj, ofstream& report_stream_val);
 	// Load the data set from a file to use for the training of the network
 	void load_dataset(string file_name);
 	// Get Set methods
@@ -138,7 +139,7 @@ public:
 	// Converts the double value passed into a string that can be written in a file while saving the network info
 	static string double_formatter(double val, bool is_bias);
 	// Converts a vector containing double values into a formatted string for reporting purposes
-	static string double_vector2string(vector<double> &vector_val);
+	static string double_vector2string(vector<double>& vector_val);
 };
 
 #endif /* ETHANOL_H_ */

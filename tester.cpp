@@ -49,7 +49,7 @@ void test2() {
 	trainer.load_dataset("test\\test2.txt");
 	trainer.set_epsilon(1.0);
 	bool flag = trainer.train();
-	if(flag) {
+	if (flag) {
 		printf("Network training successful");
 		network.save("test\\result.txt");
 	}
