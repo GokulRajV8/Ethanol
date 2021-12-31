@@ -7,7 +7,7 @@ Version 0.1: Released
 - Generates report during the processing for analysis
 
 Version 1.0: Upcoming
-- Integration with ASS and a working application
+- Integration with Haven and a working application
 - Elements in the Network and Trainer classes for UI integration
 - Better report generation
 - Learn through practice
