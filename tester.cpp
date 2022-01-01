@@ -61,6 +61,6 @@ void test2() {
 int main() {
 	test1();
 	cout << "\n\n";
-	test2();
+	// test2();
 	return 0;
 }
